@@ -168,6 +168,23 @@ team = [Shaab, arnav, Aj, player]
 
 print("="*50)
 
+import pygame  
+import time 
+import random 
+pygame.init()
+white = (255, 255, 255) 
+yellow = (255, 255, 102) 
+black = (0, 0, 0) 
+red = (213, 50, 80) 
+green = (0, 255, 0) 
+blue = (50, 153, 213)
+display;dimensions 
+dis_width = 800 
+dis_height = 600
+dis = pygame.display.set_mode((dis_width, dis_height))
+pygame.display.set_caption('Arnav Combat')
+
+
 # Game loop
 while team and enemyTeam:
     # Player's turn
