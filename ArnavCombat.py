@@ -1,3 +1,4 @@
+print("hi")
 import random
 import time
 
@@ -49,14 +50,14 @@ classes = [
 ]
 
 classData = {
-    "Warrior": ["Slash", "Shield Block", "Rush Attack", "Rage"],
-    "Wizard": ["Fireball", "Lightning Bolt", "Heal", "Ice Shards"],
-    "Archer": ["Rope Arrow", "Ambusher", "Fire Arrows", "Explosive Arrows"],
+    #"Warrior": ["Slash", "Shield Block", "Rush Attack", "Rage"],
+    #"Wizard": ["Fireball", "Lightning Bolt", "Heal", "Ice Shards"],
+    #"Archer": ["Rope Arrow", "Ambusher", "Fire Arrows", "Explosive Arrows"],
     "Rogue": ["Sneak Attack", "Poison Blade", "Ambusher", "Invisibility"],
     "Cleric": ["Heal", "Poison", "Stethoscope Whip", "Revive"],
     "Druid": ["Transform", "Camouflage", "Summon Animal", "Bleed"],
     "Builder": ["Build", "Repair", "Reinforce", "Explode"],
-    "Necromancer": ["Summon Undead", "Blood Magic", "Curse", "Burn"],
+    #"Necromancer": ["Summon Undead", "Blood Magic", "Curse", "Burn"],
     "Bard": ["Cure Wounds", "Illusion", "Mind Reading", "See Invisibility"],
     "Sorcerer": ["Fire Bolt", "Shocking Grasp", "Acid Splash", "Ray of Frost"],
     "Monk": ["Multiattack", "Wind Attack", "Meditation", "Mind Cleanse"],
@@ -89,7 +90,7 @@ DmgSkills = [
     "Sneak Attack", "Scratch", "Slash", "Rush Attack", "Fireball",
     "Lightning Bolt", "Ice Shards", "Multiattack", "Stethoscope Whip",
     "Fire Arrows", "Explosive Arrows", "Poison Blade", "Ambusher", "Bleed",
-    "Kill All", "Steal Hero", "Acid Splash", "Ray of Frost", "Poison",
+    "Kill All", "Steal Hero", "Acid Splash"cd, "Ray of Frost", "Poison",
     "Fire Breath", "Shocking Grasp", "Rock Throw", "Rock Smash", "Earthquake",
     "Snipe", "Shoot", "Stab", "Mace Smash", "Wind Attack", "Burn", "Curse"
 ]
