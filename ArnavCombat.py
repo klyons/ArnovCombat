@@ -1,13 +1,19 @@
-print("hi")
+#HP 4 the enemy
+#animate cheracter
+#animaton game loop
+
+
+import pdb
 import random
 import time
+import pygame
 
 class Player:
     def __init__(self, name, playerClass):
         self.name = name
         self.playerClass = playerClass
         self.moveSets = []
-        self.hp = 100
+        self.hp = 1
         self.attack = 10
         self.gold = 5
 
@@ -42,6 +48,18 @@ class RandomEvents:
 
     def random_heal(self, min_heal, max_heal):
         return random.randint(min_heal, max_heal)
+class enemy:
+    def __init__(self, name, enemyClass):
+        self.name = name
+        self.enemyClass = enemyClass
+        self.hp = 100
+        self.attack = 10
+
+    def take_damage(self, damage):
+        self.hp -= damage
+        if self.hp < 0:
+            self.hp = 0
+
 
 # Define classes, animals, and skills
 classes = [
@@ -50,19 +68,20 @@ classes = [
 ]
 
 classData = {
-    #"Warrior": ["Slash", "Shield Block", "Rush Attack", "Rage"],
-    #"Wizard": ["Fireball", "Lightning Bolt", "Heal", "Ice Shards"],
-    #"Archer": ["Rope Arrow", "Ambusher", "Fire Arrows", "Explosive Arrows"],
+    "Warrior": ["Slash", "Shield Block", "Rush Attack", "Rage"],
+    "Wizard": ["Fireball", "Lightning Bolt", "Heal", "Ice Shards"],
+    "Archer": ["Rope Arrow", "Ambusher", "Fire Arrows", "Explosive Arrows"],
     "Rogue": ["Sneak Attack", "Poison Blade", "Ambusher", "Invisibility"],
     "Cleric": ["Heal", "Poison", "Stethoscope Whip", "Revive"],
     "Druid": ["Transform", "Camouflage", "Summon Animal", "Bleed"],
     "Builder": ["Build", "Repair", "Reinforce", "Explode"],
-    #"Necromancer": ["Summon Undead", "Blood Magic", "Curse", "Burn"],
+    "Necromancer": ["Summon Undead", "Blood Magic", "Curse", "Burn"],
     "Bard": ["Cure Wounds", "Illusion", "Mind Reading", "See Invisibility"],
     "Sorcerer": ["Fire Bolt", "Shocking Grasp", "Acid Splash", "Ray of Frost"],
     "Monk": ["Multiattack", "Wind Attack", "Meditation", "Mind Cleanse"],
     "Arnavs Totally Not Secret Password 76": ["Kill All", "Steal Hero", "Win", "Steal Gold"]
 }
+
 
 animalData = {
     "Dog": ["Bite", "Lick", "Poop"],
@@ -90,7 +109,7 @@ DmgSkills = [
     "Sneak Attack", "Scratch", "Slash", "Rush Attack", "Fireball",
     "Lightning Bolt", "Ice Shards", "Multiattack", "Stethoscope Whip",
     "Fire Arrows", "Explosive Arrows", "Poison Blade", "Ambusher", "Bleed",
-    "Kill All", "Steal Hero", "Acid Splash"cd, "Ray of Frost", "Poison",
+    "Kill All", "Steal Hero", "Acid Splash", "Ray of Frost", "Poison",
     "Fire Breath", "Shocking Grasp", "Rock Throw", "Rock Smash", "Earthquake",
     "Snipe", "Shoot", "Stab", "Mace Smash", "Wind Attack", "Burn", "Curse"
 ]
@@ -169,23 +188,6 @@ team = [Shaab, arnav, Aj, player]
 
 print("="*50)
 
-import pygame  
-import time 
-import random 
-pygame.init()
-white = (255, 255, 255) 
-yellow = (255, 255, 102) 
-black = (0, 0, 0) 
-red = (213, 50, 80) 
-green = (0, 255, 0) 
-blue = (50, 153, 213)
-display;dimensions 
-dis_width = 800 
-dis_height = 600
-dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption('Arnav Combat')
-
-
 # Game loop
 while team and enemyTeam:
     # Player's turn
@@ -227,7 +229,15 @@ while team and enemyTeam:
         if enemyAttack in DmgSkills:
             randomDamage = randomEvents.random_damage(5, 15)
             if len(team) == 0:
-                print("Game Over")
+                print("""
+██╗░░░██╗░█████╗░██╗░░░██╗  ██╗░░░░░░█████╗░░██████╗███████╗
+╚██╗░██╔╝██╔══██╗██║░░░██║  ██║░░░░░██╔══██╗██╔════╝██╔════╝
+░╚████╔╝░██║░░██║██║░░░██║  ██║░░░░░██║░░██║╚█████╗░█████╗░░
+░░╚██╔╝░░██║░░██║██║░░░██║  ██║░░░░░██║░░██║░╚═══██╗██╔══╝░░
+░░░██║░░░╚█████╔╝╚██████╔╝  ███████╗╚█████╔╝██████╔╝███████╗
+░░░╚═╝░░░░╚════╝░░╚═════╝░  ╚══════╝░╚════╝░╚═════╝░╚══════╝
+""")
+                      
                 break
                 
             target = random.choice(team)
