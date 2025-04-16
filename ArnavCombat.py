@@ -13,7 +13,7 @@ class Player:
         self.name = name
         self.playerClass = playerClass
         self.moveSets = []
-        self.hp = 1
+        self.hp = 100
         self.attack = 10
         self.gold = 5
 
@@ -52,13 +52,14 @@ class enemy:
     def __init__(self, name, enemyClass):
         self.name = name
         self.enemyClass = enemyClass
-        self.hp = 100
+        self.hp = 1
         self.attack = 10
 
     def take_damage(self, damage):
         self.hp -= damage
         if self.hp < 0:
             self.hp = 0
+        
 
 
 # Define classes, animals, and skills
@@ -196,6 +197,12 @@ while team and enemyTeam:
             print(f"{person.name} has been defeated!")
             team.remove(person)
             continue
+            
+    for enemy in enemyTeam[:]:  # iterate over a copy of the list
+        if enemy.hp <= 0:
+            print(f"{enemy.name} has been defeated!")
+            enemyTeam.remove(enemy)
+            continue
 
         enemyWeAreAttacking = random.choice(enemyTeam)
         
@@ -224,7 +231,6 @@ while team and enemyTeam:
             print(f"{enemy.name} has been defeated!")
             enemyTeam.remove(enemy)
             continue
-
         enemyAttack = random.choice(enemyData[enemy.playerClass])
         if enemyAttack in DmgSkills:
             randomDamage = randomEvents.random_damage(5, 15)
@@ -237,7 +243,15 @@ while team and enemyTeam:
 ░░░██║░░░╚█████╔╝╚██████╔╝  ███████╗╚█████╔╝██████╔╝███████╗
 ░░░╚═╝░░░░╚════╝░░╚═════╝░  ╚══════╝░╚════╝░╚═════╝░╚══════╝
 """)
-                      
+                if len(enemy) == 0:
+                    print("""
+██╗░░░██╗░█████╗░██╗░░░██╗  ░██╗░░░░░░░██╗██╗███╗░░██╗███╗░░██╗███╗░░██╗███╗░░██╗  ██╗██╗██╗██╗
+╚██╗░██╔╝██╔══██╗██║░░░██║  ░██║░░██╗░░██║██║████╗░██║████╗░██║████╗░██║████╗░██║  ██║██║██║██║
+░╚████╔╝░██║░░██║██║░░░██║  ░╚██╗████╗██╔╝██║██╔██╗██║██╔██╗██║██╔██╗██║██╔██╗██║  ██║██║██║██║
+░░╚██╔╝░░██║░░██║██║░░░██║  ░░████╔═████║░██║██║╚████║██║╚████║██║╚████║██║╚████║  ╚═╝╚═╝╚═╝╚═╝
+░░░██║░░░╚█████╔╝╚██████╔╝  ░░╚██╔╝░╚██╔╝░██║██║░╚███║██║░╚███║██║░╚███║██║░╚███║  ██╗██╗██╗██╗
+░░░╚═╝░░░░╚════╝░░╚═════╝░  ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚══╝╚═╝░░╚══╝╚═╝░░╚══╝  ╚═╝╚═╝╚═╝╚═╝
+""")                      
                 break
                 
             target = random.choice(team)
